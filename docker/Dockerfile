@@ -17,10 +17,11 @@ RUN apt update && apt install -y \
     libcurl4-openssl-dev \
     libmaxminddb-dev \
     curl \
-    && curl -sSL https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -o packages-microsoft-prod.deb \
-        && dpkg -i packages-microsoft-prod.deb \
-        && rm packages-microsoft-prod.deb \
-        && apt update && apt install -y dotnet-sdk-10.0
+    && curl -sSL https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh \
+        && chmod +x dotnet-install.sh \
+        && ./dotnet-install.sh --channel 10.0 --install-dir /usr/share/dotnet \
+        && rm dotnet-install.sh \
+        && ln -sf /usr/share/dotnet/dotnet /usr/bin/dotnet
 
 RUN git config --system --add safe.directory '*'
 
