@@ -10,7 +10,7 @@ plugins**
 `Ray-Trace` is a lightweight **Metamod interface module** for\
 **Counter-Strike 2** servers.
 
-It exposes a shared interface: `CRayTraceInterface001` which can be
+It exposes a shared interface: `CRayTraceInterface002` which can be
 consumed from:
 
 -   Native **Metamod C++ plugins**
@@ -27,7 +27,7 @@ worlds without duplicating engine detours.
 
 ## Features
 
--   Metamod meta interface (`CRayTraceInterface001`)
+-   Metamod meta interface (`CRayTraceInterface002`)
 -   Works in **C++ and C#**
 -   Physics / hitbox / world trace presets
 -   Custom collision masks
@@ -105,7 +105,7 @@ bool LoadRayTrace()
     int iRet = 0;
 
     g_pRayTrace = static_cast<CRayTraceInterface*>(
-        g_SMAPI->MetaFactory("CRayTraceInterface001", &iRet, nullptr)
+        g_SMAPI->MetaFactory(RAYTRACE_INTERFACE_VERSION, &iRet, nullptr)
     );
 
     if (iRet == META_IFACE_FAILED || !g_pRayTrace)
